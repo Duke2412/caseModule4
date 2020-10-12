@@ -48,7 +48,6 @@
             <td th:text="${product.quantity}"></td>
             <td><img th:src="@{/__${product.img}__}" width="100"/></td>
             <td th:text="${product.category.name}"></td>
-<!--            <td><a th:href="@{'/product/edit/'+${product.productId}}">Edit</a></td>-->
             <td><a th:href="@{/product/edit-product/__${product.productId}__}">Edit</a></td>
             <td><a th:href="@{/product/delete-product/__${product.productId}__ }">Delete</a></td>
         </tr>

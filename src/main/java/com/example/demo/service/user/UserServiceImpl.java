@@ -51,11 +51,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userRepository.findByName(name);
     }
 
-//    @Override
-//    public User findByRole(Role role) {
-//        return userRepository.findByRole(role);
-//    }
-
     @Override
     public boolean nameExists(String name) {
         return userRepository.findByName(name) != null;

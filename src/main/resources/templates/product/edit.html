@@ -36,7 +36,7 @@
 
         <tr>
             <td>Current image</td>
-            <td><img th:src="@{'/i/'+${product.img}}" width="150" height="100"/></td>
+            <td><img th:src="@{/__${product.img}__}" width="150" height="100"/></td>
             <input th:type="hidden" name="image" th:field="*{img}">
         </tr><br>
 

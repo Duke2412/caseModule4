@@ -17,17 +17,9 @@ public class User{
     private Long userId;
 
     @Column(nullable = false, unique = true)
-//    @NotEmpty
-//    @NotNull
-//    @NotBlank
-//    @Size(min = 3, max = 12)
     private String name;
 
     @Column(nullable = false)
-//    @NotEmpty
-//    @NotNull
-//    @NotBlank
-//    @Size(min = 6, max = 255)
     private String password;
 
 

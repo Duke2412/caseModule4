@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/cart")
@@ -96,45 +95,13 @@ public class CartController {
         return modelAndView;
     }
 
-//    @GetMapping("/addCart/{productId}")
-//    public ModelAndView addCart(@PathVariable("productId") Long productId, @RequestParam("s") Optional<String> keyword, @RequestParam("page") Optional<Integer> page) {
-//        ModelAndView modelAndView = productController.index(keyword, page);
-//        if (this.getUser() == null) {
-//            modelAndView.addObject("message","Vui long dang nhap de mua hang");
-//            return modelAndView;
-//        } else {
-//            Cart cart = cartService.findByProductAndUser(productService.findByProductId(productId), this.getUser());
-//            if(cart != null) {
-//                cart.setQuantity(cart.getQuantity() + 1);
-//                cartService.save(cart);
-//                Long countOrder = cartService.countByOrderNumberAndUser(this.getUser().getOrderNumber(), this.getUser());
-//                modelAndView.addObject("countOrder", countOrder);
-//                return modelAndView;
-//            }
-//            cart = new Cart();
-//            if(this.getUser().getOrderNumber() == null) {
-//                this.getUser().setOrderNumber(Long.valueOf(1));
-//            }
-//            cart.setOrderNumber(this.getUser().getOrderNumber());
-//            cart.setQuantity(Long.valueOf(1));
-//            cart.setProduct(productService.findByProductId(productId));
-//            cart.setUser(this.getUser());
-//            cartService.save(cart);
-//            Long countOrder = cartService.countByOrderNumberAndUser(this.getUser().getOrderNumber(), this.getUser());
-//            modelAndView.addObject("countOrder", countOrder);
-//            return modelAndView;
-//        }
-//    }
-
     @GetMapping("/addCart/{productId}")
     public ModelAndView addCart(@PathVariable Long productId) {
-//        ModelAndView modelAndView = new ModelAndView("/eshopper/cart");
         Cart cart = cartService.findByProductAndUserAndOrderNumber(productService.findByProductId(productId), this.getUser(), this.getUser().getOrderNumber());
         if (cart != null) {
             cart.setQuantity(cart.getQuantity() + 1);
             cartService.save(cart);
             return this.showCart();
-//            Long countOrder = cartService.countByOrderNumberAndUser(this.getUser().getOrderNumber(), this.getUser());
         }
         cart = new Cart();
         if(this.getUser().getOrderNumber() == null) {

@@ -12,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -29,8 +28,6 @@ import java.util.Optional;
 @RequestMapping("/product")
 public class ProductController {
 
-//    private static String username = null;
-
     @Autowired
     Environment evn;
 
@@ -42,7 +39,6 @@ public class ProductController {
 
     @Autowired
     UserService userService;
-//    RoleService roleService;
 
     @ModelAttribute("username")
     public String getPrincipal() {
